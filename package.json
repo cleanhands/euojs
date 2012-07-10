@@ -1,0 +1,17 @@
+{ "name": "euojs"
+, "version": "0.0.1"
+, "authors": [
+    "Joseph Smith"
+  ]
+, "description": "An OpenEUO uo.dll interface for Node.js"
+, "homepage": "http://github.com/cleanhands/euojs"
+, "engines": { "node": ">=0.8.0" }
+, "main": "./lib/euo.js"
+, "repository": {
+    "type": "git"
+  , "url": "http://github.com/cleanhands/euojs.git"
+  }
+, "bugs": {
+    "url": "http://github.com/cleanhands/euojs/issues"
+  }
+}
