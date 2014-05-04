@@ -146,7 +146,7 @@ Handle<Value> startAsyncCall (const Arguments& args) {
 
   r->callback = Persistent<Function>::New(Local<Function>::Cast(args[2]));
 
-  uv_queue_work(uv_default_loop(), req, asyncCall, afterAsyncCall);
+  uv_queue_work(uv_default_loop(), req, asyncCall, (uv_after_work_cb)afterAsyncCall);
 
   return Undefined();
 }
@@ -161,7 +161,7 @@ Handle<Value> CloseHandle(const Arguments& args) {
   return scope.Close(Undefined());
 }
 
-void Init(Handle<Object> target) {
+void init(Handle<Object> target) {
   HINSTANCE hDLL = LoadLibrary("uo.dll");
   if (hDLL != NULL) {
     Open = (OPEN)GetProcAddress(hDLL, "Open");
@@ -196,4 +196,4 @@ void Init(Handle<Object> target) {
   target->Set(String::NewSymbol("call"), FunctionTemplate::New(startAsyncCall)->GetFunction());
 }
 
-NODE_MODULE(uodll, Init)
+NODE_MODULE(uodll, init)
